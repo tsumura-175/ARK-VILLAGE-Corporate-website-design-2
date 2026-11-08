@@ -116,6 +116,11 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 - `style.css` にHEX、RGB、任意の余白値を増やさない
 - 新しいトークンは用途が複数箇所で再利用される場合に追加する
 - 値ではなく役割で命名する
+- B案の通常背景は `--color-paper: #FFFFFF`、切り替え背景は `--color-paper-2: #EAEAEA`。セクション背景はcolor-mixせず、既存 `.content-section--base / --tinted` と色だけの `.section-surface--base / --tinted` を共用する。割り当てと装飾を維持する併用規則は `DESIGN_SYSTEM.md` 第20章を参照する。
+- フッターは `.site-footer` から `--color-footer-background: #000000` を参照し、`--color-ink` を一括変更しない。写真の既存ベールは `--color-media-wash` と分離する。
+- `--color-component-surface: #F2F2F2` は既存の画像枠・フォーム・無効アイコン等に使用し、セクション切り替え色と分離する。
+- `.action-button--outline` はTOP・下層共通として `style.css` に一元化する。見本専用CSS、ページID、nth-child、インライン指定で背景や部品色を補正しない。
+- B案の編集・Git・確認サーバーは `デザイン_B案` 内で行い、originをdesign-2へ向ける。A案は変更せず、ローカル比較時はpush・Pages設定変更・公開を行わない。
 
 ### 文字トークン・実部品・資料用CSS
 

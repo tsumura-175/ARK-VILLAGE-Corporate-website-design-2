@@ -1,7 +1,12 @@
 :root {
-  --color-paper: oklch(95% 0.012 75);
-  --color-paper-2: oklch(89% 0.014 75);
-  --color-paper-3: oklch(82% 0.016 70);
+  --color-paper: #FFFFFF;
+  --color-paper-2: #EAEAEA;
+  --color-paper-3: #E0E0E0;
+  /* Keep component surfaces independent from alternating section backgrounds. */
+  --color-component-surface: #F2F2F2;
+  --color-footer-background: #000000;
+  /* Preserve the established photo veil independently of page surfaces. */
+  --color-media-wash: oklch(89% 0.014 75);
   --color-ink: oklch(18% 0.012 50);
   --color-ink-2: oklch(28% 0.012 50);
   --color-muted: oklch(46% 0.012 55);

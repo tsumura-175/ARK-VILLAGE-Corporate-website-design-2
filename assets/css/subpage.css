@@ -457,7 +457,7 @@
   min-inline-size: 0;
   overflow: hidden;
   border: var(--rule-hair) solid var(--color-rule);
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
 }
 
 .map-embed iframe {
@@ -922,7 +922,7 @@
   position: relative;
   margin: 0;
   overflow: hidden;
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
 }
 
 .work-entry__media img {
@@ -1448,23 +1448,6 @@
   text-decoration: none;
 }
 
-.action-button--outline {
-  background: transparent;
-  color: var(--color-ink);
-}
-
-.action-button--outline .action-button__icon {
-  background: var(--color-ink);
-  color: var(--color-on-dark);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .action-button--outline:hover .action-button__icon {
-    background: var(--color-on-dark);
-    color: var(--color-ink);
-  }
-}
-
 .contact-confirm dd {
   margin: 0;
   overflow-wrap: anywhere;
@@ -1897,7 +1880,7 @@
 .detail-feature__media {
   margin: 0;
   overflow: hidden;
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
 }
 
 .detail-feature__media img {
@@ -2171,7 +2154,7 @@
 /* Approved shared attachment, FAQ motion, and progress-number treatments. */
 .attachment-control__surface {
   padding: var(--space-xs);
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
   scroll-margin-block-start: calc(var(--header-height) + var(--space-xl));
 }
 
