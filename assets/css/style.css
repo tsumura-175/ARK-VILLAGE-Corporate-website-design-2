@@ -991,11 +991,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   min-width: 0;
 }
 
-.hero__title {
-  display: grid;
-  font-family: var(--font-display);
-}
-
 .hero__definition {
   padding-inline-start: var(--space-md);
   border-inline-start: var(--rule-strong) solid var(--color-accent);
@@ -2202,10 +2197,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .hero__title {
-    font-size: var(--text-display);
-  }
-
   .hero__slide--park-exterior img {
     object-position: 53% 60%;
   }
@@ -2432,19 +2423,6 @@ html.is-loading body {
   justify-items: center;
 }
 
-.hero__title {
-  width: auto;
-  justify-items: center;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  text-shadow: 0 var(--rule-hair) var(--space-md)
-    color-mix(in oklch, var(--color-ink) 48%, transparent);
-}
-
-.hero__title span:last-child {
-  margin-inline-start: 0;
-}
-
 .hero__definition {
   position: absolute;
   inset-inline-start: var(--page-gutter);
@@ -2651,11 +2629,20 @@ html.is-loading body {
   }
 }
 
-/* PDF-aligned refinement: the hero message becomes the brand premise. */
+/* TOP concept copy: animate the complete h1 as a single unit. */
 .hero__title {
-  max-width: 13ch;
-  font-size: clamp(2.8rem, 14vw, 3.5rem);
+  display: grid;
+  justify-items: center;
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 12.30769231vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0em;
   line-height: 1.06;
+  text-align: center;
+  text-shadow: 0 var(--rule-hair) var(--space-md)
+    color-mix(in oklch, var(--color-ink) 48%, transparent);
 }
 
 .hero__title span {
@@ -2664,17 +2651,23 @@ html.is-loading body {
 
 .hero__title > span {
   display: block;
-  overflow: visible;
-  clip-path: inset(
-    calc(var(--space-lg) * -1)
-    0
-    calc(var(--space-lg) * -1)
-    0
-  );
 }
 
 .hero__title > span > span {
   display: block;
+}
+
+/* Keep the HTML whitespace between phrases as the natural word space. */
+@media (min-width: 48rem) {
+  .hero__title {
+    display: block;
+    font-size: clamp(2.5rem, calc(1rem + 3.125vw), 3.5rem);
+    white-space: nowrap;
+  }
+
+  .hero__title > span {
+    display: inline-block;
+  }
 }
 
 .hero__brand {
@@ -2695,28 +2688,20 @@ html.is-loading body {
 
 .js:not(.page-ready) .hero__brand,
 .js:not(.page-ready) .hero__tagline,
-.js:not(.page-ready) .hero__title > span > span {
+.js:not(.page-ready) .hero__title {
   opacity: 0;
 }
 
-.js:not(.page-ready) .hero__title > span > span {
-  transform: translateX(-104%);
+.js:not(.page-ready) .hero__title {
+  transform: translateX(calc(var(--space-xs) * -1));
 }
 
 .js.page-ready .hero__brand {
   animation: hero-brand-enter var(--dur-long) var(--ease-out) both;
 }
 
-.js.page-ready .hero__title > span > span {
-  animation: hero-title-enter var(--dur-nav) var(--ease-out) both;
-}
-
-.js.page-ready .hero__title > span:nth-child(1) > span {
-  animation-delay: var(--dur-micro);
-}
-
-.js.page-ready .hero__title > span:nth-child(2) > span {
-  animation-delay: calc(var(--dur-micro) * 2);
+.js.page-ready .hero__title {
+  animation: hero-title-enter var(--dur-nav) var(--ease-out) var(--dur-micro) both;
 }
 
 .js.page-ready .hero__tagline {
@@ -2730,7 +2715,7 @@ html.is-loading body {
 }
 
 @keyframes hero-title-enter {
-  from { opacity: 0; transform: translateX(-104%); }
+  from { opacity: 0; transform: translateX(calc(var(--space-xs) * -1)); }
   to { opacity: 1; transform: translateX(0); }
 }
 
@@ -3020,10 +3005,6 @@ html.is-loading body {
 }
 
 @media (min-width: 40rem) {
-  .hero__title {
-    font-size: var(--text-display);
-  }
-
   .business-panel__content {
     padding: var(--space-xl);
   }
@@ -3195,14 +3176,14 @@ html.is-loading body {
 @media (prefers-reduced-motion: reduce) {
   .js:not(.page-ready) .hero__brand,
   .js:not(.page-ready) .hero__tagline,
-  .js:not(.page-ready) .hero__title > span > span {
+  .js:not(.page-ready) .hero__title {
     opacity: 1;
     transform: none;
   }
 
   .js.page-ready .hero__brand,
   .js.page-ready .hero__tagline,
-  .js.page-ready .hero__title > span > span {
+  .js.page-ready .hero__title {
     animation: none;
   }
 
