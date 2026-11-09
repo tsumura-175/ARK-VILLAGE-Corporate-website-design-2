@@ -124,6 +124,7 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 
 ### 文字トークン・実部品・資料用CSS
 
+- B案の日本語と英数字の共通構成は `DESIGN_SYSTEM.md` 第23章を参照する。`--font-body` のASCII限定NotoフェイスとNoto Serif JPを維持し、部品・見本・ページごとのfont-family上書きや文字分割を追加しない。Google FontsのNoto Serif JPは400／500／700だけを読み込み、NotoとAntonioの既存用途を保つ。
 - 書体の使い分けは `DESIGN_SYSTEM.md` 第2章を参照する。ページ送りの数字は共通部品の `font-family` だけを `--font-body` に変更する。`--font-display` 自体や、フォームのステップ番号・工程番号・スケジュールの年表示など指定外の書体・文字値は変更しない。
 
 - 文字値・使用条件・使用先の正本は `DESIGN_SYSTEM.md` 第2・13・14章。実値は `tokens.css` の役割別トークンから参照し、汎用 `--text-*` の値は一括変更しない。工程番号とNEWSカテゴリ列には専用トークンを使う。
@@ -132,6 +133,7 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 - ページ送りのAPI・状態・読込順は `DESIGN_SYSTEM.md` 第16章を参照する。NEWSとWORKSで番号生成を複製せず、見本も同じ処理を使う。
 - サイト用の共通部品・トークンは `assets/css/`、見本の説明・配置・枠は `docs/components.css` の `.docs-*` に分ける。資料用CSSは `docs/components.html` だけで読む。WordPress移行時もこの境界を維持する。
 - 見本内の実部品に対し、資料用CSSから文字サイズ・内余白・装飾を上書きしない。見本名は資料用クラスで共通の小見出しトークンを参照する。技術説明と使用先はMarkdownに記載し、クライアント向けの見本には表示しない。
+- TOPの完成イメージは既存 `.garden-container__media` を修正し、3:2／透明／overflow:hidden、子画像は幅・高さ100%／cover／中央とする。図面用 `.detail-feature__media--contain` と画像・色トークンは変更しない。見本専用の画像補正やページIDによる上書きを追加しない。
 - TOPの飲食出店ボタンは `.garden-container__actions` による利用可能幅での折り返しを使い、`.contact-actions--pair / --mixed` のSP縮小指定へ再び混在させない。見本も同じラッパーと実際のリンク・準備中属性を使う。
 - `.process-list` のPC/SP共通の内部配置は共有CSSで行い、ol/li・番号→見出し→本文のDOM順序を保つ。見本専用上書きやページIDの指定を加えない。数値と余白の所有者は `DESIGN_SYSTEM.md` 第9章を参照する。
 - 中見出し＋内容には `.content-group.content-group--major` と `.content-group__title` を使う。仕様は `DESIGN_SYSTEM.md` 第2・9章を参照する。通常グループと入れ子の小見出しは維持し、タグ階層は内容に沿って選ぶ。事業の項目名は `.business-capability-grid__label` で指定し、hタグに文字指定を結び付けない。

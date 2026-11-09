@@ -2,7 +2,7 @@
 
 ## 1. 役割
 
-本書は、ARK LEAGUEコーポレートサイトで再利用するUI部品の仕様書です。2026-11-07時点の実装を基準とし、過去の案や未実装の構成は現行仕様として扱いません。
+本書は、ARK LEAGUEコーポレートサイトで再利用するUI部品の仕様書です。2026-11-09時点のB案実装を基準とし、過去の案や未実装の構成は現行仕様として扱いません。
 
 - `DESIGN_GUIDELINES.md`：ブランドの方向性とデザイン判断の原則
 - `CODING_GUIDELINES.md`：HTML、CSS、JavaScriptの実装規約
@@ -39,7 +39,7 @@
 | 項目ラベル | 16px / 1rem | 16px / 1rem | 700 | 1.5 | `--type-label` |
 | 補足・注記 | 14px / 0.875rem | 14px / 0.875rem | 400 | 1.6 | `--type-note` |
 
-各接頭辞に `-size`、`-weight`、`-line` を付けて参照します。日本語の見出し・リード・本文、通常の情報表示、ページネーションの数字は `--font-body`（Noto Sans JP）を使う。フォームのステップ番号、英字の大見出し・コンセプト文・装飾番号・工程番号（スケジュールの工程番号を含む）・スケジュールの年表示・FAQのQ/A、およびMENU／CLOSE・TOPスライダーの切り替え番号・ACCESS GUIDE／TRAIN／BUS／CARは `--font-display`（Antonio）を維持する。TOPのFAQ導線の英字は第19章のNoto Sans JP仕様を維持する。`--text-*` の既存値は変更せず、ヒーローや操作UIの用途別仕様に残します。
+各接頭辞に `-size`、`-weight`、`-line` を付けて参照します。B案の日本語の見出し・リード・本文・UIは `--font-body` のNoto Serif JPを使う。同じトークン内の半角英数字・ページネーションの数字はNoto Sans JPを維持する。フォームのステップ番号、英字の大見出し・コンセプト文・装飾番号・工程番号（スケジュールの工程番号を含む）・スケジュールの年表示・FAQのQ/A、およびMENU／CLOSE・TOPスライダーの切り替え番号・ACCESS GUIDE／TRAIN／BUS／CARは `--font-display`（Antonio）を維持する。TOPのFAQ導線の英字は第19章のNoto Sans JP仕様を維持する。`--text-*` の既存値は変更せず、ヒーローや操作UIの用途別仕様に残します。
 
 | 後続内容までの距離 | PC | SP | 管理トークン |
 | --- | --- | --- | --- |
@@ -333,7 +333,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 ### 小見出し・ボタン
 
 - `.content-groups` は関連項目の容器。間隔はSPが `--space-xl`、768px以上が `--space-2xl`。
-- `.content-group` と `.content-group__title` は見出し＋内容の組。通常は第2章の小見出し仕様を維持する。中見出しとして使う場合だけ親へ `.content-group--major` を付ける。Noto Sans JP、PC32px／SP24px・700・1.35、後続24px／16px。赤い斜線や縦線は付けない。
+- `.content-group` と `.content-group__title` は見出し＋内容の組。通常は第2章の小見出し仕様を維持する。中見出しとして使う場合だけ親へ `.content-group--major` を付ける。Noto Serif JP、PC32px／SP24px・700・1.35、後続24px／16px。赤い斜線や縦線は付けない。
 - 共通CSSはローカル変数 `--content-group-title-size / -weight / -line / -after` で役割別トークンを選ぶ。`.content-group` が小見出し値を初期化し、`--major` が中見出し値へ切り替える。入れ子の通常グループは小見出しへ戻り、グループ外の既存タイトルも従来値を維持する。文字指定やページ専用CSSを複製しない。
 - 見出し自体のmarginと親gapは0。後続要素のmarginだけで所定の距離を取る。事業のアイコン一覧が単独で持つ上margin56pxは、この既存の隣接要素ルールで24px／16pxへ置き換わる。写真からグループまでの距離は外側の `.content-groups` のgapが所有し、見出し後の余白と区別する。
 - 実使用先は事業内容4事業とアイコン一覧の見本3点。採用情報・飲食出店募集の既存 `.content-group` は小見出しのまま維持する。募集要項の注記と個別職種も別グループで関係を示す。
@@ -398,7 +398,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 - ヘッダー・メニュー・フッターの「飲食出店募集」と、NEWS先頭の固定告知「募集概要を見る」はTOPの `#ark-garden` へ接続する。見本は相対パスでTOPへ接続する。
 - 募集告知はNEWS見出し→写真・日付のない固定告知→通常記事→一覧リンクの順に置く。ヒーロー直下の写真付き告知と、記事一覧内の募集行は削除し、重複を解消する。TOP下部の募集セクションと画像は維持する。固定告知の表示・CMS管理・募集終了時の手順は第18章を参照する。
 - TOPの紹介写真には説明文を重ねず、SPでも写真下の説明文を置かない。上部のセクション見出しと画像のalt、右下の「完成イメージ」は維持する。文章用ラッパー・余白と、可読性用の暗いグラデーションは削除した。写真枠の寸法・トリミングは維持する。
-- 20ft・40ft枠は768px以上で2列、未満は縦並び。画像は3:2の枠に `object-fit: contain` で全体を表示する。
+- 20ft・40ft枠は768px以上で2列、未満は縦並び。TOPの完成イメージは3:2の透明な枠に、幅・高さ100%・中央基準の `object-fit: cover` で表示し、はみ出しをクリップする。同じ表示幅では同じ高さに揃え、図面のcontain仕様へは適用しない。
 - TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。
 - 詳細は `arkgarden-recruit/#container-20ft` / `#container-40ft` へ接続。枠下のFAQ導線は日本語ラベル「飲食出店に関するよくある質問」→英字「FAQ」→矢印で構成し、行全体を `arkgarden-recruit/#faq` へ接続する。書体・文字値と配置は第19章を参照する。
 - Googleフォームはクライアント管理。正式URL未受領の応募ボタンは `href="#"`・`data-pending-link`・`aria-disabled="true"` と準備中の読み上げ名を持つ。確定時はTOP・各AREA・スケジュール下をコンテナ別に一括更新する。
@@ -827,3 +827,39 @@ Chromiumで320／375／767／768／1024／1440pxを確認した。
 
 - `.hero__tagline` の既存定義に `text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);` を指定する。PC・SP共通とし、明るい写真の上で可読性を補う。縁取りや背景帯は追加しない。
 - 日本語の文言・書体・サイズ・太さ・色・行間・配置・余白・表示演出、英文の文字仕様・影・一括入場、背景写真とスライダーは維持する。中央ロゴは非表示のままとし、A案への変更は今回含めない。
+
+## 22. B案の日本語書体（Zen適用時の記録・2026-11-09）
+
+本章はZen適用時の履歴。現在のB案の書体とTOPコンテナ画像は第23章を正本とする。
+
+- 日本語はZen Kaku Gothic New・400／500／700。実ページ16件と部品見本は同じGoogle Fonts CSS2のlinkを使い、既存のAntonio 400／500／600／700・Noto Sans JP 400／500／700にZenの必要な3ウェイトだけを追加する。`display=swap` を維持し、フォントファイルをサイト内に配置しない。
+- `tokens.css` の `--font-body` は `"Noto Sans JP ASCII", "Zen Kaku Gothic New", "Noto Sans JP", sans-serif`。ASCIIフェイスは既存NotoのGoogle Fonts公式Latinサブセットを参照し、`unicode-range: U+0020-007E` で半角英数字・空白・ASCII記号だけに限定する。400／500／700を個別に宣言し、既存600指定が700に照合される挙動も維持する。Noto全体がZenより優先される構成にはしない。
+- 日本語の見出し、本文、注記、ナビゲーション、ボタン、フォーム、FAQ、募集要項、交通案内、TOP日本語コピー、フッター、見本の日本語説明に共通適用する。文中へspanを増やさず、JSによる文字分割は行わない。
+- `--font-display` とその使用箇所は変更しない。フォームのステップ番号等を含め、各要素の現在の用途別指定を維持する。本文のBMX／ARK LEAGUE、日付、金額、ページ送り数字等はASCIIフェイスによりNotoを維持する。ASCII以外の日本語と全角文字はZenを使い、読み込み失敗時は既存Notoへフォールバックする。
+- 共通文字トークンの数値・font-weight・行間・字間・余白・本文幅・明示改行は変更しない。自然な折り返し差を許容し、個別の縮小や改行補正を追加しない。英字FAQ導線の600は従来のNoto 700への照合を維持し、日本語用に600や合成太字を追加しない。
+- 旧章の変更時点の確認記録にあるNotoの日本語表記は履歴であり、Zen適用時の日本語書体は本章に記録し、現在の仕様は第23章を参照する。見本専用CSSのフォント補正、Adobe Fonts／MB101の仮設定、新しい比較ページは設けない。
+- Google Fonts公式情報：[Zen Kaku Gothic New](https://fonts.google.com/specimen/Zen+Kaku+Gothic+New)、[CSS2 API](https://developers.google.com/fonts/docs/css2)。ASCIIフェイスのURLは公式CSS2応答から取得する。更新時も400／500／700の元フェイスと文字範囲を確認し、URLやウェイトを推測しない。
+
+### 日本語書体変更の確認
+
+- 実サイトと見本の16ページを390／1440pxで変更前と照合し、計2,464要素の文字サイズ・太さ・行間・字間・padding・margin・gapを維持した。TOP・採用・飲食出店募集・問い合わせ・見本は320／768pxでも追加確認し、ページの横溢れなし。狭幅の一部見出しでは既存の縦積み判定により上余白0／12pxが切り替わるが、新しい余白・配置ルールは追加しない。
+- 400／500／700の日本語描画をCanvasでZen単独指定と照合して一致、従来Notoとは異なることを確認。半角英数字の描画はNoto単独指定および変更前と一致した。Zenの各ウェイトの日本語WOFF2をブラウザーからHTTP 200で取得し、FontFaceのloaded状態を確認した。ローカルフォントを参照するsrcは使用しない。
+- PC／SPで長い施設名・リード・FAQ・ボタン・フォーム・見本を目視確認。追加の文字縮小・強制改行・サイズ・余白調整なし。入場完了後のTOPコピー、写真切り替え、メニュー、FAQ開閉を確認。全JS・画像・subpage.css・components.cssは不変で、A案はGit設定を含む全1,067ファイルのSHA-256が作業前後で一致した。
+
+## 23. B案のNoto Serif JPとTOPコンテナ完成イメージ（2026-11-09）
+
+- 現在の日本語はNoto Serif JP・400／500／700。全16実ページ・見本の既存Google Fonts CSS2リンクで配信し、Zen Kaku Gothic Newの読み込みを置き換える。端末へのフォントインストールに依存せず、`display=swap` を維持する。
+- `--font-body` は `"Noto Sans JP ASCII", "Noto Serif JP", "Noto Sans JP", sans-serif`。既存のASCII限定フェイス・400／500／700・U+0020-007Eをそのまま保持し、本文系の半角英数字をNoto Sans JPで表示する。Noto全体の読み込みもフォールバック用に残す。
+- `--font-display` とAntonioの用途・ウェイトは変更しない。文字サイズ・太さ・行間・字間・余白・幅・明示改行は既存の共通ルールを維持し、自然な折り返しと既存の見出し自動配置を使用する。ページごとのフォント指定・文字縮小・強制改行は追加しない。
+- TOP日本語コピーの黒い影と `hero-tagline-enter`、英文全体のAntonio 400と一括入場は維持する。中央ロゴは復元しない。
+- TOPの20ft・40ft画像は `.garden-container__media` の既存3:2枠を共用する。`overflow: hidden; background: transparent;` とし、子画像は幅・高さ100%・`object-fit: cover; object-position: center;`。画像の縦横比は維持し、同じ表示幅なら高さを揃える。別テンプレート・専用上書き・画像加工は追加しない。
+- 20ftの元画像には細い白縁がある。中央coverで残る上下の白縁は元画像内の画素であり、従来のcontainにより露出していたベージュの背景帯とは別に扱う。
+- `.garden-container__media` の画像見本は既存部品見本に存在しないため、新規追加しない。見本の既存部品は実サイトと同じ共通CSSを使う。飲食出店募集ページの平面図・断面図は `.detail-feature__media--contain` 等の既存指定で全体表示を維持する。画像ファイル・背景色トークン・他の写真やオーバーレイは変更しない。
+- 公式配信元：[Noto Serif JP](https://fonts.google.com/specimen/Noto+Serif+JP)。元のASCIIフェイス、Antonio、Noto Sans JPの用途別読み込みを維持し、Noto Serif JPは必要な400／500／700だけを指定する。
+
+### Noto Serif JP・TOP完成イメージの確認
+
+- 16ページを390／1440px、TOP・採用・飲食出店募集・問い合わせ・見本を767／768pxで変更前と照合（42条件）。文字サイズ・太さ・行間・字間・padding・margin・gapの計算値は一致し、ページの横溢れなし。Noto Serif JPの400／500／700の日本語WOFF2はブラウザーでHTTP 200・loadedを確認し、各ウェイトの日本語描画は単独Noto Serif JPと一致、ASCIIは従来Notoと一致した。
+- TOP2枚はすべての確認幅で3:2・同幅同高・透明・中央cover・クリップを確認。1440pxでは各634.91×423.27px、390pxでは各343×228.66px。中央のまま店舗カウンター、建物・テラスを識別でき、追加の位置調整なし。20ft元画像の白縁は元画素で上約17px・下約19px。CSSのベージュ帯は解消し、元画像の白縁は残す。
+- 図面はcontain、他ページの画像のfit・position・aspect-ratioは変更前と一致。PC/SPで長い施設名・リード・見本・フォームを目視確認し、追加の縮小・強制改行・専用補正は不要。日本語コピーの影と入場、Antonio 400とPC1行／SP2行、中央ロゴ削除、スライダーとメニューの動作を確認。全JS・画像・下層CSS・見本専用CSSは不変。
+- 作業開始時の未コミット変更を保持。操作はB案内だけで行い、今回コミット・push・公開は行わない。A案のCSS・仕様書・Git履歴には作業中の別更新を検出したため、一致とは報告せず、その更新を変更・復元していない。A案の.git/configは作業開始時と同じ。

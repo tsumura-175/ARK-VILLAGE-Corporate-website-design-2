@@ -1,3 +1,33 @@
+/* Preserve existing Noto Sans JP glyphs for printable ASCII only.
+ * Source: Google Fonts CSS2, Noto Sans JP 400/500/700, latin subset.
+ * Keep discrete weights so existing CSS 600 continues to match 700. */
+@font-face {
+  font-family: "Noto Sans JP ASCII";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v57/-F62fjtqLzI2JPCgQBnw7HFYwQgP.woff2) format('woff2');
+  unicode-range: U+0020-007E;
+}
+
+@font-face {
+  font-family: "Noto Sans JP ASCII";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v57/-F62fjtqLzI2JPCgQBnw7HFYwQgP.woff2) format('woff2');
+  unicode-range: U+0020-007E;
+}
+
+@font-face {
+  font-family: "Noto Sans JP ASCII";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v57/-F62fjtqLzI2JPCgQBnw7HFYwQgP.woff2) format('woff2');
+  unicode-range: U+0020-007E;
+}
+
 :root {
   --color-paper: #FFFFFF;
   --color-paper-2: #EAEAEA;
@@ -23,7 +53,7 @@
   --color-subpage-grid-soft: oklch(98% 0.005 75 / 0.025);
 
   --font-display: "Antonio", "Arial Narrow", sans-serif;
-  --font-body: "Noto Sans JP", sans-serif;
+  --font-body: "Noto Sans JP ASCII", "Noto Serif JP", "Noto Sans JP", sans-serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;

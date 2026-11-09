@@ -2,14 +2,14 @@
  * genre: editorial · macrostructure: Feature Stack · F2 knobs: pinned=viewport, content=photography, steps=4
  * theme: studied-DNA (source: https://jillion.co.jp/) · studied: yes · DNA-source: url
  * observed-paper: oklch(23% 0.006 70) · observed-accent: neutral · rhythm: browser-verified reference
- * display: Antonio · body: Noto Sans JP · axes: light / display-condensed-bold / warm
+ * display: Antonio · body: Noto Serif JP / Noto Sans JP ASCII · axes: light / display-condensed-bold / warm
  * enrichment: E8 Hero Photography · crop=full-bleed · animation=zoom-crossfade
  * nav: N10 retained by explicit brief · footer: Ft2 · motion: business-scroll-sync / zoom-crossfade / vertical-link-swap
  * refinement: stacked-section-headings / unified-section-heading-rhythm / top-aligned-centered-news-index / company-header-above-media / lower-right-company-overlay / footer-statement-leading / shared-view-more-motion
  * context: municipalities, corporate partners, participants, candidates · tone: powerful / premium / grounded
  * verification: slop-test 1-58 pass · responsive 320/375/414/768/1280 · no horizontal overflow · contrast/tokens preserved
  */
-@import url("./tokens.css?v=20261108-b-gray-2");
+@import url("./tokens.css?v=20261109-b-serif-container-1");
 
 /* Japanese Business UI · surface: corporate · posture: institutional
  * audiences: municipalities, corporate partners, candidates · density: balanced
@@ -1667,13 +1667,15 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .garden-container__media {
   aspect-ratio: 3 / 2;
-  background: var(--color-media-wash);
+  overflow: hidden;
+  background: transparent;
 }
 
 .garden-container__media img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .garden-container__actions {
